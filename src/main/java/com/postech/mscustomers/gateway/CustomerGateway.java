@@ -6,7 +6,6 @@ import com.postech.mscustomers.repository.CustomerRepository;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
-import java.util.UUID;
 
 @Component
 public class CustomerGateway implements ICustomerGateway {
@@ -29,8 +28,7 @@ public class CustomerGateway implements ICustomerGateway {
     @Override
     public boolean deleteCustomer(String strId) {
         try {
-            UUID uuid = UUID.fromString(strId);
-            customerRepository.deleteById(uuid);
+            customerRepository.deleteById(Integer.valueOf(strId));
         } catch (Exception e) {
             return false;
         }
@@ -40,8 +38,7 @@ public class CustomerGateway implements ICustomerGateway {
     @Override
     public Customer findCustomer(String strId) {
         try {
-            UUID uuid = UUID.fromString(strId);
-            return customerRepository.findById(uuid).orElseThrow();
+            return customerRepository.findById(Integer.valueOf(strId)).orElseThrow();
         } catch (Exception e) {
             return null;
         }

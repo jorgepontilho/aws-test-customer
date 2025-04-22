@@ -14,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.ArgumentMatchers.any;
@@ -124,7 +123,7 @@ class CustomerControllerTest {
         @Test
         void devePermitirAtualizarCliente() throws Exception {
             // Arrange
-            UUID customerId = UUID.randomUUID();
+            Integer customerId =99;
             CustomerDTO customerDTO = new CustomerDTO();
             customerDTO.setNome("John Doe");
             // Mock the behavior of customerGateway
@@ -165,7 +164,7 @@ class CustomerControllerTest {
         @Test
         void devePermitirApagarCliente() throws Exception {
             // Arrange
-            String customerId = UUID.randomUUID().toString();
+            String customerId = "99";
             Customer customer = new Customer();
             // Mock the behavior of customerGateway
             when(customerGateway.findCustomer(customerId)).thenReturn(customer);
@@ -181,7 +180,7 @@ class CustomerControllerTest {
         @Test
         void deveGerarExcecaoQuandoDeletarClienteNãoEncontrado() throws Exception {
             // Arrange
-            String customerId = UUID.randomUUID().toString();
+            String customerId = "99";
             // Mock the behavior of customerGateway
             when(customerGateway.findCustomer(customerId)).thenReturn(null);
 

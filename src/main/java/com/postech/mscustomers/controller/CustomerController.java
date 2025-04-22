@@ -16,7 +16,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.UUID;
 
 @Slf4j
 @RestController
@@ -43,7 +42,7 @@ public class CustomerController {
         }
     }
 
-    @GetMapping("/")
+    @GetMapping
     @Operation(summary = "Request for list all customers", responses = {
             @ApiResponse(description = "Customer's list", responseCode = "200"),
     })
@@ -76,7 +75,7 @@ public class CustomerController {
         try {
             Customer customerOld = customerGateway.findCustomer(id);
             Customer customerNew = new Customer(customerDTO);
-            customerNew.setId(UUID.fromString(id));
+            customerNew.setId(Integer.valueOf(id));
             CustomerUseCase.validarUpdateCliente(id, customerOld, customerNew);
             customerNew = customerGateway.updateCustomer(customerNew);
             return new ResponseEntity<>(customerNew, HttpStatus.OK);

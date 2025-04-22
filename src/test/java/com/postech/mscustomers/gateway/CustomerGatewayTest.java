@@ -14,7 +14,6 @@ import org.mockito.MockitoAnnotations;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 public class CustomerGatewayTest {
     @InjectMocks
@@ -59,7 +58,7 @@ public class CustomerGatewayTest {
     @Test
     void testDeleteCustomer_ValidInput_ReturnsTrue() {
         // Arrange
-        UUID customerId = UUID.randomUUID();
+        Integer customerId = 99;
         // Mock the behavior of customerRepository
         doNothing().when(customerRepository).deleteById(customerId);
 
@@ -85,7 +84,7 @@ public class CustomerGatewayTest {
     @Test
     void testFindCustomer_ValidInput_ReturnsCustomer() {
         // Arrange
-        UUID customerId = UUID.randomUUID();
+        Integer customerId = 99;
         Customer expectedCustomer = new Customer();
         // Mock the behavior of customerRepository
         when(customerRepository.findById(customerId)).thenReturn(Optional.of(expectedCustomer));

@@ -5,8 +5,6 @@ import com.postech.mscustomers.entity.Customer;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.Test;
 
-import java.util.UUID;
-
 public class CustomerUseCaseTest {
     @Test
     void testValidarInsertCustomer_ValidInput() {
@@ -30,25 +28,23 @@ public class CustomerUseCaseTest {
     @Test
     void testValidarUpdateCliente_ValidInput() {
         // Arrange
-        String customerId = UUID.randomUUID().toString();
         Customer customerToUpdate = new Customer();
-        customerToUpdate.setId(UUID.fromString(customerId));
+        customerToUpdate.setId(999);
         Customer customerNew = new Customer();
-        customerNew.setId(UUID.fromString(customerId));
+        customerNew.setId(999);
 
         // Act & Assert
-        assertDoesNotThrow(() -> CustomerUseCase.validarUpdateCliente(customerId, customerToUpdate, customerNew));
+        assertDoesNotThrow(() -> CustomerUseCase.validarUpdateCliente(String.valueOf(999), customerToUpdate, customerNew));
     }
 
     @Test
     void testValidarUpdateCliente_CustomerNotFound_ThrowsException() {
         // Arrange
-        String customerId = UUID.randomUUID().toString();
         Customer customerNew = new Customer();
-        customerNew.setId(UUID.fromString(customerId));
+        customerNew.setId(999);
 
         // Act & Assert
-        assertThrows(IllegalArgumentException.class, () -> CustomerUseCase.validarUpdateCliente(customerId, null, customerNew));
+        assertThrows(IllegalArgumentException.class, () -> CustomerUseCase.validarUpdateCliente(String.valueOf(999), null, customerNew));
     }
 
     @Test

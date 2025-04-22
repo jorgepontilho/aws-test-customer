@@ -34,18 +34,14 @@ docker-compose up --build
 Assim que o processo for concluído, tanto a aplicação quanto o banco de dados estarão rodando em containers compartilhando a mesma rede.<br>
 
 
-## Documentação
-A Collection utilizada no Postman está disponível na URL:
-https://github.com/MendesMoe/java-ms-customers/blob/main/src/main/resources/PosTech_TC4.postman_collection.json
-
 A documentação detalhada da API está acessível na URL:
-http://localhost:8081/swagger-ui/index.html
+http://localhost:8080/swagger-ui/index.html
 
 ## Portas configuradas
 
-App: http://localhost:8081
+App: http://localhost:8080
 
 MySQL: jdbc:mysql://localhost:3306/customerdb
 
 ## Git
-https://github.com/jorgepontilho/postech-java-tc4-customers
+https://github.com/jorgepontilho/aws-test-customer
